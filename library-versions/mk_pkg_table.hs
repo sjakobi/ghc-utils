@@ -52,7 +52,8 @@ main = do
         allgvs  = S.toDescList $ M.keysSet vs
 
     let hdr = "<tr><th>" ++ cells ++ "</th></tr>"
-          where cells = intercalate "</th> <th>" $ (" " : [ "<b>" <> getGhcRelease v <> "</b>" | v <- allgvs ]) ++ [""]
+          where cells = intercalate "</th> <th style=\"text-align: center\">"
+                    $ (" " : [ "<b>" <> getGhcRelease v <> "</b>" | v <- allgvs ]) ++ [""]
     putStrLn "<table>"
     putStrLn hdr
 
@@ -76,7 +77,7 @@ main = do
                         in showVersion pver <> vis'
                     cell = case n of
                       1 -> "<td>" ++ text ++ "</td>"
-                      _ -> "<td colspan=\"" ++ show n  ++ "\">" ++ text ++ "</td>"
+                      _ -> "<td colspan=\"" ++ show n  ++ "\" style=\"text-align: center\">" ++ text ++ "</td>"
                 return cell
 
         putStrLn $ "<tr><td><tt>" <> getPackageName pn <> "</tt></td> " <> tmp <> " </tr>"
